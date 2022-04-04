@@ -14,9 +14,9 @@ protocol {{ module_info.name }}PresenterProtocol {
 
 class {{ module_info.name }}Presenter: {{ module_info.name }}PresenterProtocol {
 
-  private let view: {{ module_info.name }}ViewControllerProtocol
+  private weak var view: ({{ module_info.name }}ViewControllerProtocol & {{ module_info.name }}ViewController)?
 
-  init(with view: {{ module_info.name }}ViewControllerProtocol) {
+  init(with view: ({{ module_info.name }}ViewControllerProtocol & {{ module_info.name }}ViewController)) {
     self.view = view
   }
 
