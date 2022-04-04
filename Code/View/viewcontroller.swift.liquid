@@ -17,12 +17,12 @@ class {{ module_info.name }}ViewController: UIViewController, {{ module_info.nam
     static let storyboarID = String(describing: {{ module_info.name }}ViewController.self)
   }
 
-  static func buildViewController() -> ({{ module_info.name }}ControllerProtocol & {{ module_info.name }}Controller)! {
-    let storyboard = UIStoryboard(name: Constants.storyboarID, bundle: .main)
-    return storyboard.instantiateInitialViewController() as? {{ module_info.name }}ViewController
-  }
-
   private var presenter: {{ module_info.name }}PresenterProtocol?
+
+  static func buildViewController() -> ({{ module_info.name }}ViewControllerProtocol & UIViewController)! {
+    let storyboard = UIStoryboard(name: Constants.storyboarID, bundle: .main)
+    return storyboard.instantiateViewController(withIdentifier: Constants.storyboarID) as? {{ module_info.name }}ViewController
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
